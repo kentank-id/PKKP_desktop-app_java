@@ -51,6 +51,11 @@ public class frmMenu extends javax.swing.JFrame {
         jMenu1.setText("Data Master");
 
         mnPeserta.setText("Data Peserta");
+        mnPeserta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnPesertaActionPerformed(evt);
+            }
+        });
         jMenu1.add(mnPeserta);
 
         mnUser.setText("Data User");
@@ -69,7 +74,7 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jMenu1.add(mnKabKota);
 
-        mnKec.setText("Data Kabupaten/Kota");
+        mnKec.setText("Data Kab/Kota");
         jMenu1.add(mnKec);
 
         mnKel.setText("Data Kelurahan");
@@ -82,7 +87,7 @@ public class frmMenu extends javax.swing.JFrame {
         jMenuItem7.setText("Seleksi Administrasi");
         jMenu2.add(jMenuItem7);
 
-        jMenuItem8.setText("Penilaian");
+        jMenuItem8.setText("Seleksi Nilai");
         jMenu2.add(jMenuItem8);
 
         jMenuItem9.setText("Lolos Seleksi");
@@ -101,7 +106,12 @@ public class frmMenu extends javax.swing.JFrame {
         jMenuItem12.setText("Laporan Lolos Seleksi Administrasi");
         jMenu3.add(jMenuItem12);
 
-        jMenuItem13.setText("Laporan Nilai");
+        jMenuItem13.setText("Laporan Lolos Seleksi Nilai");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem13);
 
         jMenuItem14.setText("Laporan Peserta Lolos");
@@ -139,6 +149,15 @@ public class frmMenu extends javax.swing.JFrame {
     private void mnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mnUserActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void mnPesertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnPesertaActionPerformed
+        // TODO add your handling code here:
+        new frmPeserta().setVisible(true);
+    }//GEN-LAST:event_mnPesertaActionPerformed
 
     /**
      * @param args the command line arguments

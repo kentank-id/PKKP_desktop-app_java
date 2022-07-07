@@ -13,6 +13,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Data Peserta"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnPesertaActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnUser">
               <Properties>
@@ -32,7 +35,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnKec">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Data Kabupaten/Kota"/>
+                <Property name="text" type="java.lang.String" value="Data Kab/Kota"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnKel">
@@ -54,7 +57,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Penilaian"/>
+                <Property name="text" type="java.lang.String" value="Seleksi Nilai"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
@@ -86,8 +89,11 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem13">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Laporan Nilai"/>
+                <Property name="text" type="java.lang.String" value="Laporan Lolos Seleksi Nilai"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem13ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem14">
               <Properties>

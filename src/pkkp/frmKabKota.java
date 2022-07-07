@@ -3,19 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package pkkp;
+
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ROYAN FARID
  */
 public class frmKabKota extends javax.swing.JFrame {
+
     //membuat object
     private Connection con;
     private Statement stat;
     private ResultSet res;
-    final String querySelect = "SELECT * FROM kabupaten";
-    
+    final String querySelect = "SELECT * FROM data_peserta GROUP by peserta_kabkota";
+
     /**
      * Creates new form frmKabKota
      */
@@ -23,7 +26,7 @@ public class frmKabKota extends javax.swing.JFrame {
         initComponents();
         open_db();
         selectDB();
-        
+
     }
 
     //method buka database
@@ -36,12 +39,12 @@ public class frmKabKota extends javax.swing.JFrame {
             System.out.println("Koneksi DB : Failed " + e);
         }
     }
-    
+
     //method select database
     public void selectDB() {
         DefaultTableModel dtb = new DefaultTableModel();
-        dtb.addColumn("kabupaten_nama");
-        dtb.addColumn("kabupaten_id");
+        dtb.addColumn("id");
+        dtb.addColumn("Kabupaten/ Kota");
         tblKabKota.setModel(dtb);
         System.out.println("sebelum try");
         try {
@@ -49,8 +52,8 @@ public class frmKabKota extends javax.swing.JFrame {
             res = stat.executeQuery(querySelect);
             while (res.next()) {
                 dtb.addRow(new Object[]{
-                    res.getString("kabupaten_nama"),
-                    res.getString("kabupaten_id")
+                    res.getString("peserta_id"),
+                    res.getString("peserta_kabkota")
                 });
             }
             System.out.println("Sukses Load Table");

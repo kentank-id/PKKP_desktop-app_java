@@ -64,7 +64,7 @@ public class frmSelectPeserta extends javax.swing.JFrame {
         }
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("* Click pada baris untuk peserta yang dipilih");
+        jLabel2.setText("* Daftar peserta yang telah mendaftar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
