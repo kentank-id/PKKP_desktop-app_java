@@ -119,6 +119,7 @@ public class frmKecamatan extends javax.swing.JFrame {
 
     private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnKeluarActionPerformed
 
     /**

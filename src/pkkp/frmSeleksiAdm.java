@@ -5,28 +5,102 @@
 package pkkp;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author ROYAN FARID
  */
 public class frmSeleksiAdm extends javax.swing.JFrame {
+
+    //create variable and objects
     Connection con;
+    ResultSet res;
+    final String querySelect = "SELECT * FROM data_peserta WHERE peserta_usia>? AND peserta_usia<? AND peserta_ipk>? AND peserta_surat_dokter=? AND peserta_skck=? AND peserta_status=?";
+
     /**
      * Creates new form frmSeleksiAdm
      */
     public frmSeleksiAdm() {
         initComponents();
         open_db();
+        deleteDB();
     }
-    
+
     //method buka database
     private void open_db() {
         try {
-            KoneksiMysql kon = new KoneksiMysql("localhost","root","","dbpkkp");
+            KoneksiMysql kon = new KoneksiMysql("localhost", "root", "", "dbpkkp");
             con = kon.getConnection();
-        } catch(Exception e) {
-            System.out.println("Error : "+e);
+        } catch (Exception e) {
+            System.out.println("Error : " + e);
+        }
+    }
+
+    //method select database from table data_peserta
+    public void selectDB() {
+        DefaultTableModel dtb = new DefaultTableModel();
+        PreparedStatement statement;
+        dtb.addColumn("Id Peserta");
+        dtb.addColumn("Nama");
+        dtb.addColumn("Asal Kabupaten/Kota");
+        tblSeleksi.setModel(dtb);
+        try {
+            statement = con.prepareStatement(querySelect);
+            statement.setString(1, minUsia.getValue().toString());
+            statement.setString(2, maxUsia.getValue().toString());
+            statement.setString(3, minIpk.getText());
+            statement.setString(4, cmbSurDok.getSelectedItem().toString());
+            statement.setString(5, cmbSkck.getSelectedItem().toString());
+            statement.setString(6, cmbStatus.getSelectedItem().toString());
+            res = statement.executeQuery();
+            while (res.next()) {
+                dtb.addRow(new Object[]{
+                    res.getString("peserta_id"),
+                    res.getString("peserta_nama"),
+                    res.getString("peserta_kabkota")
+                });
+            }
+            System.out.println("Sukses Load Table");
+        } catch (SQLException e) {
+            System.out.println("Gagal Load Table " + e);
+        }
+    }
+
+    //method insert data from tblSeleksi and store it into table lolos_administrasi
+    private void insertDB() {
+        Statement statement = null;
+        int pilih = JOptionPane.showConfirmDialog(null, "Simpan Data Lolos Administrasi ?");
+        if (pilih == 0) {
+            deleteDB();
+            try {
+                statement = con.createStatement();
+                for (int i = 0; i < tblSeleksi.getRowCount(); i++) {
+                    String id = tblSeleksi.getValueAt(i, 0).toString();
+                    String nama = tblSeleksi.getValueAt(i, 1).toString();
+                    String asal = tblSeleksi.getValueAt(i, 2).toString();
+                    System.out.println(id + " " + nama + " " + asal);
+                    statement.executeUpdate("INSERT INTO lolos_administrasi VALUES('" + id + "','" + nama + "','" + asal + "')");
+                    System.out.println("berhasil insert data");
+                }
+            } catch (SQLException e) {
+                System.out.println("gagal insert data " + e);
+            }
+        } else {
+            System.out.println("tidak jadi simpan data lolos administrasi");
+        }
+    }
+
+    //method delete data from table lolos_administrasi (overwrite)
+    private void deleteDB() {
+        Statement statement = null;
+        try {
+            statement = con.createStatement();
+            statement.executeUpdate("DELETE FROM lolos_administrasi");
+            System.out.println("berhasil overwrite");
+        } catch (SQLException e) {
+            System.out.println("gagal overwrite " + e);
         }
     }
 
@@ -45,11 +119,6 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
         minIpk = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSeleksi = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        text = new javax.swing.JTextArea();
-        cmdTambah = new javax.swing.JButton();
-        cmdBatal = new javax.swing.JButton();
-        cmdCetak = new javax.swing.JButton();
         cmdKeluar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         minUsia = new javax.swing.JSpinner();
@@ -62,6 +131,7 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         cmbStatus = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
+        cmdSimpan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Seleksi Administrasi");
@@ -73,6 +143,11 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
         jLabel2.setText("* Atur kriteria peserta yang dapat lolos");
 
         cmdSeleksi.setText("Seleksi");
+        cmdSeleksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdSeleksiActionPerformed(evt);
+            }
+        });
 
         minIpk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,19 +163,12 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Kode Peserta", "Nama Lengkap", "Hasil Seleksi Administrasi"
+                "null", "null", "null"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -108,17 +176,12 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblSeleksi);
 
-        text.setColumns(20);
-        text.setRows(5);
-        jScrollPane2.setViewportView(text);
-
-        cmdTambah.setText("Tambah");
-
-        cmdBatal.setText("Batal");
-
-        cmdCetak.setText("Cetak");
-
         cmdKeluar.setText("Keluar");
+        cmdKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdKeluarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Min Usia");
 
@@ -138,6 +201,13 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
 
         jLabel8.setText("Status");
 
+        cmdSimpan.setText("Simpan");
+        cmdSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdSimpanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,18 +215,14 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmdTambah)
-                            .addComponent(cmdBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmdCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmdKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(cmdSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmdKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -180,9 +246,8 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cmbSkck, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(maxUsia, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmdSeleksi, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(maxUsia, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmdSeleksi, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -215,25 +280,19 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbSkck, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(4, 4, 4)
+                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(cmdSeleksi))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel8))
+                .addGap(32, 32, 32)
+                .addComponent(cmdSeleksi)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmdTambah)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmdBatal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmdCetak)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmdKeluar)))
-                .addGap(41, 41, 41))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdKeluar)
+                    .addComponent(cmdSimpan))
+                .addGap(129, 129, 129))
         );
 
         pack();
@@ -242,6 +301,21 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
     private void minIpkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minIpkActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_minIpkActionPerformed
+
+    private void cmdSeleksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdSeleksiActionPerformed
+        // TODO add your handling code here:
+        selectDB();
+    }//GEN-LAST:event_cmdSeleksiActionPerformed
+
+    private void cmdSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdSimpanActionPerformed
+        // TODO add your handling code here:
+        insertDB();
+    }//GEN-LAST:event_cmdSimpanActionPerformed
+
+    private void cmdKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdKeluarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_cmdKeluarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -282,11 +356,9 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbSkck;
     private javax.swing.JComboBox<String> cmbStatus;
     private javax.swing.JComboBox<String> cmbSurDok;
-    private javax.swing.JButton cmdBatal;
-    private javax.swing.JButton cmdCetak;
     private javax.swing.JButton cmdKeluar;
     private javax.swing.JButton cmdSeleksi;
-    private javax.swing.JButton cmdTambah;
+    private javax.swing.JButton cmdSimpan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -296,11 +368,9 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner maxUsia;
     private javax.swing.JTextField minIpk;
     private javax.swing.JSpinner minUsia;
     private javax.swing.JTable tblSeleksi;
-    private javax.swing.JTextArea text;
     // End of variables declaration//GEN-END:variables
 }

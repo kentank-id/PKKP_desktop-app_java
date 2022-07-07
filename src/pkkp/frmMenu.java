@@ -34,9 +34,9 @@ public class frmMenu extends javax.swing.JFrame {
         mnKec = new javax.swing.JMenuItem();
         mnKel = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        mnAdministrasi = new javax.swing.JMenuItem();
+        mnsNilai = new javax.swing.JMenuItem();
+        mnSeleksi = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -66,7 +66,7 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jMenu1.add(mnUser);
 
-        mnKabKota.setText("Data Kecamatan");
+        mnKabKota.setText("Data Kab/Kota");
         mnKabKota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnKabKotaActionPerformed(evt);
@@ -74,24 +74,49 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jMenu1.add(mnKabKota);
 
-        mnKec.setText("Data Kab/Kota");
+        mnKec.setText("Data Kecamatan");
+        mnKec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnKecActionPerformed(evt);
+            }
+        });
         jMenu1.add(mnKec);
 
         mnKel.setText("Data Kelurahan");
+        mnKel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnKelActionPerformed(evt);
+            }
+        });
         jMenu1.add(mnKel);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Transaksi");
 
-        jMenuItem7.setText("Seleksi Administrasi");
-        jMenu2.add(jMenuItem7);
+        mnAdministrasi.setText("Seleksi Administrasi");
+        mnAdministrasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnAdministrasiActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnAdministrasi);
 
-        jMenuItem8.setText("Seleksi Nilai");
-        jMenu2.add(jMenuItem8);
+        mnsNilai.setText("Seleksi Nilai");
+        mnsNilai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnsNilaiActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnsNilai);
 
-        jMenuItem9.setText("Lolos Seleksi");
-        jMenu2.add(jMenuItem9);
+        mnSeleksi.setText("Lolos Seleksi");
+        mnSeleksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnSeleksiActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnSeleksi);
 
         jMenuBar1.add(jMenu2);
 
@@ -144,10 +169,12 @@ public class frmMenu extends javax.swing.JFrame {
 
     private void mnKabKotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnKabKotaActionPerformed
         // TODO add your handling code here:
+        new frmKabKota().setVisible(true);
     }//GEN-LAST:event_mnKabKotaActionPerformed
 
     private void mnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnUserActionPerformed
         // TODO add your handling code here:
+        new frmUser().setVisible(true);
     }//GEN-LAST:event_mnUserActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
@@ -158,6 +185,29 @@ public class frmMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         new frmPeserta().setVisible(true);
     }//GEN-LAST:event_mnPesertaActionPerformed
+
+    private void mnKecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnKecActionPerformed
+        // TODO add your handling code here:
+        new frmKecamatan().setVisible(true);
+    }//GEN-LAST:event_mnKecActionPerformed
+
+    private void mnKelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnKelActionPerformed
+        // TODO add your handling code here:
+        new frmKelurahan().setVisible(true);
+    }//GEN-LAST:event_mnKelActionPerformed
+
+    private void mnAdministrasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAdministrasiActionPerformed
+        // TODO add your handling code here:
+        new frmSeleksiAdm().setVisible(true);
+    }//GEN-LAST:event_mnAdministrasiActionPerformed
+
+    private void mnSeleksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeleksiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnSeleksiActionPerformed
+
+    private void mnsNilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnsNilaiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnsNilaiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,13 +256,13 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem mnAdministrasi;
     private javax.swing.JMenuItem mnKabKota;
     private javax.swing.JMenuItem mnKec;
     private javax.swing.JMenuItem mnKel;
     private javax.swing.JMenuItem mnPeserta;
+    private javax.swing.JMenuItem mnSeleksi;
     private javax.swing.JMenuItem mnUser;
+    private javax.swing.JMenuItem mnsNilai;
     // End of variables declaration//GEN-END:variables
 }
