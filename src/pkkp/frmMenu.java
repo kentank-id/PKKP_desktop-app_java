@@ -26,6 +26,10 @@ public class frmMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popupMenu1 = new java.awt.PopupMenu();
+        menuBar1 = new java.awt.MenuBar();
+        menu1 = new java.awt.Menu();
+        menu2 = new java.awt.Menu();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnPeserta = new javax.swing.JMenuItem();
@@ -40,9 +44,18 @@ public class frmMenu extends javax.swing.JFrame {
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
+
+        popupMenu1.setLabel("popupMenu1");
+
+        menu1.setLabel("File");
+        menuBar1.add(menu1);
+
+        menu2.setLabel("Edit");
+        menuBar1.add(menu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,6 +126,11 @@ public class frmMenu extends javax.swing.JFrame {
         jMenu3.setText("Laporan");
 
         jMenuItem10.setText("Laporan Data Peserta");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem10);
 
         jMenuItem11.setText("Laporan Data User");
@@ -120,6 +138,9 @@ public class frmMenu extends javax.swing.JFrame {
 
         jMenuItem12.setText("Laporan Lolos Seleksi Administrasi");
         jMenu3.add(jMenuItem12);
+
+        jMenuItem1.setText("Laporan Lolos Seleksi Nilai");
+        jMenu3.add(jMenuItem1);
 
         jMenuItem14.setText("Laporan Peserta Lolos");
         jMenu3.add(jMenuItem14);
@@ -129,6 +150,11 @@ public class frmMenu extends javax.swing.JFrame {
         jMenu4.setText("Utility");
 
         jMenuItem6.setText("Keluar");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem6);
 
         jMenuBar1.add(jMenu4);
@@ -184,6 +210,15 @@ public class frmMenu extends javax.swing.JFrame {
         new frmSeleksiNilai().setVisible(true);
     }//GEN-LAST:event_mnsNilaiActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -225,11 +260,15 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem6;
+    private java.awt.Menu menu1;
+    private java.awt.Menu menu2;
+    private java.awt.MenuBar menuBar1;
     private javax.swing.JMenuItem mnAdministrasi;
     private javax.swing.JMenuItem mnKabKota;
     private javax.swing.JMenuItem mnKec;
@@ -237,5 +276,6 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnPeserta;
     private javax.swing.JMenuItem mnUser;
     private javax.swing.JMenuItem mnsNilai;
+    private java.awt.PopupMenu popupMenu1;
     // End of variables declaration//GEN-END:variables
 }
