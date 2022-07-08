@@ -102,14 +102,14 @@ public class frmPeserta extends javax.swing.JFrame {
      * @return the kelurahan
      */
     public String getKelurahan() {
-        return jComboBoxKabKota.getSelectedItem().toString();
+        return jComboBoxKel.getSelectedItem().toString();
     }
 
     /**
      * @param kelurahan the kelurahan to set
      */
     public void setKelurahan(String kelurahan) {
-        this.jComboBoxKabKota.setSelectedItem(kelurahan);
+        this.jComboBoxKel.setSelectedItem(kelurahan);
     }
 
     /**
@@ -267,9 +267,9 @@ public class frmPeserta extends javax.swing.JFrame {
         dtb.addColumn("usia");
         dtb.addColumn("alamat");
         dtb.addColumn("provinsi");
-        dtb.addColumn("kelurahan");
-        dtb.addColumn("kecamatan");
         dtb.addColumn("kabkota");
+        dtb.addColumn("kecamatan");
+        dtb.addColumn("kelurahan");
         dtb.addColumn("surat_dokter");
         dtb.addColumn("skck");
         dtb.addColumn("status");
@@ -289,9 +289,9 @@ public class frmPeserta extends javax.swing.JFrame {
                     res.getInt("peserta_usia"),
                     res.getString("peserta_alamat"),
                     res.getString("peserta_provinsi"),
-                    res.getString("peserta_kelurahan"),
-                    res.getString("peserta_kecamatan"),
                     res.getString("peserta_kabkota"),
+                    res.getString("peserta_kecamatan"),
+                    res.getString("peserta_kelurahan"),
                     res.getString("peserta_surat_dokter"),
                     res.getString("peserta_skck"),
                     res.getString("peserta_status"),

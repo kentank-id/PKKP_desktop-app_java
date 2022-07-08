@@ -25,7 +25,7 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
     public frmSeleksiAdm() {
         initComponents();
         open_db();
-        deleteDB();
+        selectDB();
     }
 
     //method buka database
@@ -309,6 +309,7 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
 
     private void cmdSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdSimpanActionPerformed
         // TODO add your handling code here:
+        deleteDB();
         insertDB();
     }//GEN-LAST:event_cmdSimpanActionPerformed
 

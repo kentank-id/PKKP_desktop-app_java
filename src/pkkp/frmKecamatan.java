@@ -3,21 +3,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package pkkp;
-import java.sql.Connection;
+
+import java.sql.*;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author ROYAN FARID
  */
 public class frmKecamatan extends javax.swing.JFrame {
-    Connection con;
+    
+    // membuat object
+    private Connection con;
+    private Statement stat;
+    private ResultSet res;
+    final String querySelect = "SELECT * FROM data_peserta GROUP by peserta_kecamatan";
     //create variable and 
     /**
      * Creates new form frmKecamatan
      */
     public frmKecamatan() {
         initComponents();
+        open_db();
+        selectDB();
     }
     
+    //method buka database
     private void open_db() {
         try {
             KoneksiMysql kon = new KoneksiMysql("localhost", "root", "", "dbpkkp");
@@ -27,10 +37,33 @@ public class frmKecamatan extends javax.swing.JFrame {
             System.out.println("Koneksi DB : Failed " + e);
         }
     }
-    
-    private void tampilData(){
-        
+
+    //method select database
+    public void selectDB() {
+        DefaultTableModel dtb = new DefaultTableModel();
+        dtb.addColumn("id");
+        dtb.addColumn("Kecamatan");
+        tblKecamatan.setModel(dtb);
+        System.out.println("sebelum try");
+        try {
+            stat = con.createStatement();
+            res = stat.executeQuery(querySelect);
+            while (res.next()) {
+                dtb.addRow(new Object[]{
+                    res.getString("peserta_id"),
+                    res.getString("peserta_Kecamatan")
+                });
+            }
+            System.out.println("Sukses Load Table");
+        } catch (SQLException e) {
+            System.out.println("Gagal Load Table " + e);
+        }
     }
+
+    
+    // private void tampilData(){
+        
+    // }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,7 +76,7 @@ public class frmKecamatan extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblKecamatan = new javax.swing.JTable();
         btnKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,7 +85,7 @@ public class frmKecamatan extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Data Kecamatan");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblKecamatan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -78,7 +111,7 @@ public class frmKecamatan extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblKecamatan);
 
         btnKeluar.setText("Keluar");
         btnKeluar.addActionListener(new java.awt.event.ActionListener() {
@@ -161,6 +194,6 @@ public class frmKecamatan extends javax.swing.JFrame {
     private javax.swing.JButton btnKeluar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblKecamatan;
     // End of variables declaration//GEN-END:variables
 }

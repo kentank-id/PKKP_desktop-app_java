@@ -36,12 +36,10 @@ public class frmMenu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         mnAdministrasi = new javax.swing.JMenuItem();
         mnsNilai = new javax.swing.JMenuItem();
-        mnSeleksi = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -110,14 +108,6 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jMenu2.add(mnsNilai);
 
-        mnSeleksi.setText("Lolos Seleksi");
-        mnSeleksi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnSeleksiActionPerformed(evt);
-            }
-        });
-        jMenu2.add(mnSeleksi);
-
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Laporan");
@@ -130,14 +120,6 @@ public class frmMenu extends javax.swing.JFrame {
 
         jMenuItem12.setText("Laporan Lolos Seleksi Administrasi");
         jMenu3.add(jMenuItem12);
-
-        jMenuItem13.setText("Laporan Lolos Seleksi Nilai");
-        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem13ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem13);
 
         jMenuItem14.setText("Laporan Peserta Lolos");
         jMenu3.add(jMenuItem14);
@@ -177,10 +159,6 @@ public class frmMenu extends javax.swing.JFrame {
         new frmUser().setVisible(true);
     }//GEN-LAST:event_mnUserActionPerformed
 
-    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem13ActionPerformed
-
     private void mnPesertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnPesertaActionPerformed
         // TODO add your handling code here:
         new frmPeserta().setVisible(true);
@@ -201,12 +179,9 @@ public class frmMenu extends javax.swing.JFrame {
         new frmSeleksiAdm().setVisible(true);
     }//GEN-LAST:event_mnAdministrasiActionPerformed
 
-    private void mnSeleksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSeleksiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mnSeleksiActionPerformed
-
     private void mnsNilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnsNilaiActionPerformed
         // TODO add your handling code here:
+        new frmSeleksiNilai().setVisible(true);
     }//GEN-LAST:event_mnsNilaiActionPerformed
 
     /**
@@ -253,7 +228,6 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem mnAdministrasi;
@@ -261,7 +235,6 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnKec;
     private javax.swing.JMenuItem mnKel;
     private javax.swing.JMenuItem mnPeserta;
-    private javax.swing.JMenuItem mnSeleksi;
     private javax.swing.JMenuItem mnUser;
     private javax.swing.JMenuItem mnsNilai;
     // End of variables declaration//GEN-END:variables
