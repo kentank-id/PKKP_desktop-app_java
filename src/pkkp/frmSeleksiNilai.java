@@ -132,7 +132,7 @@ public class frmSeleksiNilai extends javax.swing.JFrame {
                 statement.executeUpdate();
 
             } catch (Exception e) {
-                System.out.println("Gagal hapus "+e);
+                System.out.println("Gagal hapus " + e);
             }
         }
         selectDB();
@@ -145,8 +145,8 @@ public class frmSeleksiNilai extends javax.swing.JFrame {
         System.out.println(finalValue);
         return finalValue;
     }
-    
-    private void clearForm(){
+
+    private void clearForm() {
         txtId_Peserta.setText("");
         txtNm_Peserta.setText("");
         txtTulis.setText("");
@@ -385,7 +385,9 @@ public class frmSeleksiNilai extends javax.swing.JFrame {
 
     private void cmdSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdSimpanActionPerformed
         // TODO add your handling code here:
+
         insertDB();
+        clearForm();
     }//GEN-LAST:event_cmdSimpanActionPerformed
 
     private void cmdHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdHapusActionPerformed

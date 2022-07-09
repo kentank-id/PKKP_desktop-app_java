@@ -5,7 +5,6 @@
 package pkkp;
 
 import java.awt.HeadlessException;
-import java.awt.print.PrinterException;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,8 +12,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -24,23 +21,21 @@ import javax.swing.table.TableModel;
  *
  * @author ROYAN FARID
  */
-public class frmSelectPeserta extends javax.swing.JFrame {
-
+public class frmSelectLolosAdm extends javax.swing.JFrame {
     //create object
     Connection con;
 
     //create variabel
-    final String querySelect = "SELECT * FROM data_peserta";
-
+    final String querySelect = "SELECT * FROM lolos_administrasi";
     /**
-     * Creates new form frmSelectPeserta
+     * Creates new form frmSelectLolosAdm
      */
-    public frmSelectPeserta() {
+    public frmSelectLolosAdm() {
         initComponents();
         open_db();
         selectDB();
     }
-
+    
     //method buka database
     private void open_db() {
         try {
@@ -57,43 +52,19 @@ public class frmSelectPeserta extends javax.swing.JFrame {
         ResultSet res;
         Statement stat;
         DefaultTableModel dtb = new DefaultTableModel();
-        dtb.addColumn("id");
-        dtb.addColumn("nama");
-        dtb.addColumn("kelamin");
-        dtb.addColumn("usia");
-        dtb.addColumn("alamat");
-        dtb.addColumn("provinsi");
-        dtb.addColumn("kabkota");
-        dtb.addColumn("kecamatan");
-        dtb.addColumn("kelurahan");
-        dtb.addColumn("surat_dokter");
-        dtb.addColumn("skck");
-        dtb.addColumn("status");
-        dtb.addColumn("ipk");
-        dtb.addColumn("email");
-        dtb.addColumn("telp");
-        tblPsrt.setModel(dtb);
+        dtb.addColumn("ID");
+        dtb.addColumn("Nama");
+        dtb.addColumn("Asal");
+        tblLolosAdm.setModel(dtb);
         System.out.println("sebelum try");
         try {
             stat = con.createStatement();
             res = stat.executeQuery(querySelect);
             while (res.next()) {
                 dtb.addRow(new Object[]{
-                    res.getString("peserta_id"),
-                    res.getString("peserta_nama"),
-                    res.getString("peserta_kelamin"),
-                    res.getInt("peserta_usia"),
-                    res.getString("peserta_alamat"),
-                    res.getString("peserta_provinsi"),
-                    res.getString("peserta_kabkota"),
-                    res.getString("peserta_kecamatan"),
-                    res.getString("peserta_kelurahan"),
-                    res.getString("peserta_surat_dokter"),
-                    res.getString("peserta_skck"),
-                    res.getString("peserta_status"),
-                    res.getString("peserta_ipk"),
-                    res.getString("peserta_email"),
-                    res.getInt("peserta_telp")
+                    res.getString("id"),
+                    res.getString("nama_peserta"),
+                    res.getString("asal_peserta")
                 });
             }
             System.out.println("Sukses Load Table");
@@ -104,7 +75,7 @@ public class frmSelectPeserta extends javax.swing.JFrame {
 
     public void export(JTable table, File file) {
         try {
-            TableModel m = tblPsrt.getModel();
+            TableModel m = tblLolosAdm.getModel();
             FileWriter fw = new FileWriter(file);
             for (int i = 0; i < m.getColumnCount(); i++) {
                 fw.write(m.getColumnName(i) + "\t");
@@ -131,56 +102,58 @@ public class frmSelectPeserta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblPsrt = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblLolosAdm = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("DAFTAR PESERTA");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("PESERTA LOLOS SELEKSI ADMINISTASI");
 
-        tblPsrt.setModel(new javax.swing.table.DefaultTableModel(
+        tblLolosAdm.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Kode Peserta", "Nama Lengkap", "Jenis Kelamin", "Usia", "Alamat", "Provinsi", "Kabupaten/Kota", "Kecamatan", "Kelurahan", "Surat Dokter", "SKCK", "Status", "IPK", "Email", "No WhatsApp"
+                "Kode Peserta", "Nama Peserta", "Hasil Seleksi"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblPsrt);
-        if (tblPsrt.getColumnModel().getColumnCount() > 0) {
-            tblPsrt.getColumnModel().getColumn(7).setResizable(false);
-        }
+        jScrollPane1.setViewportView(tblLolosAdm);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("* Daftar peserta yang telah mendaftar");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("* Click pada baris untuk peserta yang dipilih");
 
-        jButton1.setText("Keluar");
+        jButton1.setText("Cetak");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cetak");
+        jButton2.setText("Keluar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -191,58 +164,55 @@ public class frmSelectPeserta extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 947, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-//        try {
-//            // TODO add your handling code here:
-//            tblPsrt.print();
-//            System.out.println("printing....");
-//        } catch (PrinterException ex) {
-//            Logger.getLogger(frmSelectPeserta.class.getName()).log(Level.SEVERE, null, ex);
-//            System.out.println("gagal print");
-//        }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
         try {
-            export(tblPsrt, new File("Laporan_Peserta_Terdaftar.xls"));
+            export(tblLolosAdm, new File("Laporan_Lolos_Administrasi.xls"));
             JOptionPane.showMessageDialog(null, "Sukses Export data .....");
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null, "gagal export" + e);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,20 +231,20 @@ public class frmSelectPeserta extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmSelectPeserta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmSelectLolosAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmSelectPeserta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmSelectLolosAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmSelectPeserta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmSelectLolosAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmSelectPeserta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmSelectLolosAdm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmSelectPeserta().setVisible(true);
+                new frmSelectLolosAdm().setVisible(true);
             }
         });
     }
@@ -282,9 +252,9 @@ public class frmSelectPeserta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblPsrt;
+    private javax.swing.JTable tblLolosAdm;
     // End of variables declaration//GEN-END:variables
 }
