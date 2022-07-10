@@ -17,7 +17,7 @@ public class frmKabKota extends javax.swing.JFrame {
     private Connection con;
     private Statement stat;
     private ResultSet res;
-    final String querySelect = "SELECT * FROM data_peserta GROUP by peserta_kabkota";
+    final String querySelect = "SELECT * FROM data_peserta GROUP by peserta_kabkota ORDER BY CONVERT(peserta_id, decimal) DESC";
 
     /**
      * Creates new form frmKabKota
@@ -26,7 +26,9 @@ public class frmKabKota extends javax.swing.JFrame {
         initComponents();
         open_db();
         selectDB();
-
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setLocation(0, 200);
+        setResizable(false);
     }
 
     //method buka database
@@ -78,9 +80,13 @@ public class frmKabKota extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Data Kabupaten/Kota");
+        setBackground(new java.awt.Color(153, 255, 153));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(250, 234, 72));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Data Kabupaten/Kota");
+        jLabel1.setOpaque(true);
 
         tblKabKota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,7 +116,9 @@ public class frmKabKota extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblKabKota);
 
-        jButton1.setText("Keluar");
+        jButton1.setBackground(new java.awt.Color(255, 51, 51));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Close");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -121,15 +129,13 @@ public class frmKabKota extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 300, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -138,11 +144,11 @@ public class frmKabKota extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();

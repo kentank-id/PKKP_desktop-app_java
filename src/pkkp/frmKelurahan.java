@@ -17,7 +17,7 @@ public class frmKelurahan extends javax.swing.JFrame {
     private Connection con;
     private Statement stat;
     private ResultSet res;
-    final String querySelect = "SELECT * FROM data_peserta GROUP by peserta_kelurahan";
+    final String querySelect = "SELECT * FROM data_peserta ORDER BY CONVERT(peserta_kelurahan, decimal) DESC";
 
     /**
      * Creates new form frmKelurahan
@@ -26,6 +26,9 @@ public class frmKelurahan extends javax.swing.JFrame {
         initComponents();
         open_db();
         selectDB();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setLocation(0, 200);
+        setResizable(false);
     }
 
     //method buka database
@@ -78,8 +81,11 @@ public class frmKelurahan extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Data Kelurahan");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(250, 234, 72));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Data Kelurahan");
+        jLabel1.setOpaque(true);
 
         tblKelurahan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,7 +115,9 @@ public class frmKelurahan extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblKelurahan);
 
-        btnKeluar.setText("Keluar");
+        btnKeluar.setBackground(new java.awt.Color(255, 51, 51));
+        btnKeluar.setForeground(new java.awt.Color(255, 255, 255));
+        btnKeluar.setText("Close");
         btnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKeluarActionPerformed(evt);
@@ -123,12 +131,11 @@ public class frmKelurahan extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -136,9 +143,9 @@ public class frmKelurahan extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnKeluar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

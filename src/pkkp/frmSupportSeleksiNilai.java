@@ -30,6 +30,9 @@ public class frmSupportSeleksiNilai extends javax.swing.JFrame {
         initComponents();
         open_db();
         selectDB();
+        setResizable(false);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setLocation(400, 0);
     }
 
     //method buka database
@@ -98,7 +101,10 @@ public class frmSupportSeleksiNilai extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblLolosAdminsitrasi);
 
-        cmdKeluar.setText("Keluar");
+        cmdKeluar.setBackground(new java.awt.Color(255, 0, 51));
+        cmdKeluar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cmdKeluar.setForeground(new java.awt.Color(255, 255, 255));
+        cmdKeluar.setText("CANCEL");
         cmdKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdKeluarActionPerformed(evt);
@@ -112,18 +118,18 @@ public class frmSupportSeleksiNilai extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cmdKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmdKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addComponent(cmdKeluar)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
 
         pack();

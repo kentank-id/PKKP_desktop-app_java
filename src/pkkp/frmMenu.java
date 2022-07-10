@@ -4,6 +4,8 @@
  */
 package pkkp;
 
+import com.formdev.flatlaf.FlatLightLaf;
+
 /**
  *
  * @author ROYAN FARID
@@ -15,6 +17,11 @@ public class frmMenu extends javax.swing.JFrame {
      */
     public frmMenu() {
         initComponents();
+        setSize(400,200);
+        setResizable(false);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setLocation(0, 0);
+        getContentPane().setBackground(new java.awt.Color(250, 234, 72));
     }
 
     /**
@@ -30,6 +37,9 @@ public class frmMenu extends javax.swing.JFrame {
         menuBar1 = new java.awt.MenuBar();
         menu1 = new java.awt.Menu();
         menu2 = new java.awt.Menu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnPeserta = new javax.swing.JMenuItem();
@@ -47,6 +57,7 @@ public class frmMenu extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
 
         popupMenu1.setLabel("popupMenu1");
@@ -57,11 +68,20 @@ public class frmMenu extends javax.swing.JFrame {
         menu2.setLabel("Edit");
         menuBar1.add(menu2);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jMenuItem2.setText("jMenuItem2");
 
-        jMenu1.setText("Data Master");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(250, 234, 72));
 
-        mnPeserta.setText("Data Peserta");
+        jLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 55)); // NOI18N
+        jLabel1.setText("MAIN MENU");
+
+        jLabel2.setFont(new java.awt.Font("sansserif", 2, 12)); // NOI18N
+        jLabel2.setText("* this view can only be seen by Admin");
+
+        jMenu1.setText("MASTER");
+
+        mnPeserta.setText("Input Participant");
         mnPeserta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnPesertaActionPerformed(evt);
@@ -69,7 +89,7 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jMenu1.add(mnPeserta);
 
-        mnUser.setText("Data User");
+        mnUser.setText("Input Admin");
         mnUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnUserActionPerformed(evt);
@@ -77,7 +97,7 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jMenu1.add(mnUser);
 
-        mnKabKota.setText("Data Kab/Kota");
+        mnKabKota.setText("Recent Regencies");
         mnKabKota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnKabKotaActionPerformed(evt);
@@ -85,7 +105,7 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jMenu1.add(mnKabKota);
 
-        mnKec.setText("Data Kecamatan");
+        mnKec.setText("Recent Districts");
         mnKec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnKecActionPerformed(evt);
@@ -93,7 +113,7 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jMenu1.add(mnKec);
 
-        mnKel.setText("Data Kelurahan");
+        mnKel.setText("Recent Villages");
         mnKel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnKelActionPerformed(evt);
@@ -103,9 +123,9 @@ public class frmMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Transaksi");
+        jMenu2.setText("TRANSACTION");
 
-        mnAdministrasi.setText("Seleksi Administrasi");
+        mnAdministrasi.setText("Administration Selection");
         mnAdministrasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnAdministrasiActionPerformed(evt);
@@ -113,7 +133,7 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jMenu2.add(mnAdministrasi);
 
-        mnsNilai.setText("Seleksi Nilai");
+        mnsNilai.setText("Grades Selection");
         mnsNilai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnsNilaiActionPerformed(evt);
@@ -123,9 +143,9 @@ public class frmMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Laporan");
+        jMenu3.setText("REPORT");
 
-        jMenuItem10.setText("Laporan Data Peserta");
+        jMenuItem10.setText("Participant Data");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem10ActionPerformed(evt);
@@ -133,7 +153,7 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem10);
 
-        jMenuItem11.setText("Laporan Data User");
+        jMenuItem11.setText("Admin Data");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem11ActionPerformed(evt);
@@ -141,7 +161,7 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem11);
 
-        jMenuItem12.setText("Laporan Lolos Seleksi Administrasi");
+        jMenuItem12.setText("Pass Adminstrative Selection");
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem12ActionPerformed(evt);
@@ -149,7 +169,7 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem12);
 
-        jMenuItem1.setText("Laporan Lolos Seleksi Nilai");
+        jMenuItem1.setText("Pass Grades Selection");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -157,7 +177,7 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem1);
 
-        jMenuItem14.setText("Laporan Peserta Lolos");
+        jMenuItem14.setText("Final Participant Report");
         jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem14ActionPerformed(evt);
@@ -167,9 +187,12 @@ public class frmMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Utility");
+        jMenu4.setText("UTILITY");
 
-        jMenuItem6.setText("Keluar");
+        jMenuItem3.setText("About Developer");
+        jMenu4.add(jMenuItem3);
+
+        jMenuItem6.setText("Exit");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
@@ -185,11 +208,24 @@ public class frmMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 565, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel1)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 280, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -232,7 +268,7 @@ public class frmMenu extends javax.swing.JFrame {
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
-        dispose();
+    java.lang.System.exit(0);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
@@ -269,22 +305,7 @@ public class frmMenu extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        FlatLightLaf.setup();
         //</editor-fold>
 
         /* Create and display the form */
@@ -296,6 +317,8 @@ public class frmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -306,6 +329,8 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem6;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;

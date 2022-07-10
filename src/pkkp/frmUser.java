@@ -27,6 +27,7 @@ public class frmUser extends javax.swing.JFrame {
     final String queryInsert = "INSERT INTO data_user(id, user_id, user_password) VALUES(?,?,?)";
     final String queryUpdate = "UPDATE data_user SET user_id=?, user_password=? WHERE id=?";
     final String queryDelete = "DELETE FROM data_user WHERE id=?";
+    
 
     /**
      * Creates new form frmUser
@@ -36,8 +37,12 @@ public class frmUser extends javax.swing.JFrame {
         open_db();
         aktif(false);
         setTombol(true);
+        setResizable(false);
         baca_data();
         tblUser.setDefaultEditor(Object.class, null);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        setLocation(0, 200);
     }
 
     // connect db
@@ -187,6 +192,7 @@ public class frmUser extends javax.swing.JFrame {
         cmdEdit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -227,14 +233,18 @@ public class frmUser extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblUser);
 
-        cmdTambah.setText("Tambah");
+        cmdTambah.setBackground(new java.awt.Color(0, 102, 255));
+        cmdTambah.setForeground(new java.awt.Color(255, 255, 255));
+        cmdTambah.setText("Add");
         cmdTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdTambahActionPerformed(evt);
             }
         });
 
-        cmdSimpan.setText("Simpan");
+        cmdSimpan.setBackground(new java.awt.Color(0, 102, 255));
+        cmdSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        cmdSimpan.setText("Save");
         cmdSimpan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cmdSimpanMouseClicked(evt);
@@ -246,27 +256,35 @@ public class frmUser extends javax.swing.JFrame {
             }
         });
 
-        cmdBatal.setText("Batal");
+        cmdBatal.setBackground(new java.awt.Color(0, 102, 255));
+        cmdBatal.setForeground(new java.awt.Color(255, 255, 255));
+        cmdBatal.setText("Cancel");
         cmdBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdBatalActionPerformed(evt);
             }
         });
 
-        cmdKeluar.setText("Keluar");
+        cmdKeluar.setBackground(new java.awt.Color(255, 51, 51));
+        cmdKeluar.setForeground(new java.awt.Color(255, 255, 255));
+        cmdKeluar.setText("Close");
         cmdKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdKeluarActionPerformed(evt);
             }
         });
 
-        cmdHapus.setText("Hapus");
+        cmdHapus.setBackground(new java.awt.Color(0, 102, 255));
+        cmdHapus.setForeground(new java.awt.Color(255, 255, 255));
+        cmdHapus.setText("Delete");
         cmdHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdHapusActionPerformed(evt);
             }
         });
 
+        cmdEdit.setBackground(new java.awt.Color(0, 102, 255));
+        cmdEdit.setForeground(new java.awt.Color(255, 255, 255));
         cmdEdit.setText("Edit");
         cmdEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,12 +294,18 @@ public class frmUser extends javax.swing.JFrame {
 
         jLabel2.setText("ID");
 
+        jLabel4.setBackground(new java.awt.Color(250, 234, 72));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("INPUT ADMIN");
+        jLabel4.setOpaque(true);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,24 +318,29 @@ public class frmUser extends javax.swing.JFrame {
                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtPassword)
-                                .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cmdTambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmdEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmdHapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmdBatal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmdKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(cmdSimpan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmdTambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmdEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmdHapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmdBatal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmdKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmdSimpan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -325,7 +354,7 @@ public class frmUser extends javax.swing.JFrame {
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cmdTambah)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmdEdit)
@@ -337,8 +366,8 @@ public class frmUser extends javax.swing.JFrame {
                         .addComponent(cmdHapus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmdKeluar))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -351,6 +380,7 @@ public class frmUser extends javax.swing.JFrame {
 
     private void cmdTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdTambahActionPerformed
         // TODO add your handling code here:
+        edit=false;
         aktif(true);
         setTombol(false);
         kosong();
@@ -465,6 +495,7 @@ public class frmUser extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblUser;
     private javax.swing.JTextField txtId;

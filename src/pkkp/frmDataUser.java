@@ -22,12 +22,13 @@ import javax.swing.table.TableModel;
  * @author ROYAN FARID
  */
 public class frmDataUser extends javax.swing.JFrame {
+
     //create object
     Connection con;
 
     //create variabel
     final String querySelect = "SELECT * FROM data_user";
-    
+
     /**
      * Creates new form frmDataUser
      */
@@ -35,8 +36,11 @@ public class frmDataUser extends javax.swing.JFrame {
         initComponents();
         open_db();
         selectDB();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setLocation(0, 200);
+        setResizable(false);
     }
-    
+
     //method buka database
     private void open_db() {
         try {
@@ -54,7 +58,7 @@ public class frmDataUser extends javax.swing.JFrame {
         Statement stat;
         DefaultTableModel dtb = new DefaultTableModel();
         dtb.addColumn("ID");
-        dtb.addColumn("User ID");
+        dtb.addColumn("Admin ID");
         dtb.addColumn("Password");
         tblDataUser.setModel(dtb);
         System.out.println("sebelum try");
@@ -63,7 +67,6 @@ public class frmDataUser extends javax.swing.JFrame {
             res = stat.executeQuery(querySelect);
             while (res.next()) {
                 dtb.addRow(new Object[]{
-                    res.getString("id"),
                     res.getString("user_id"),
                     res.getString("user_password")
                 });
@@ -111,9 +114,9 @@ public class frmDataUser extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("DATA USER");
+        jLabel2.setText("DATA ADMIN");
 
         tblDataUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,14 +164,14 @@ public class frmDataUser extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmdCetak)
-                        .addGap(29, 29, 29)
+                        .addComponent(cmdCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -176,15 +179,15 @@ public class frmDataUser extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCetak)
                     .addComponent(jButton1))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();

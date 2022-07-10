@@ -23,10 +23,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
@@ -37,34 +37,40 @@
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtId" min="-2" pref="112" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                               <Component id="txtPassword" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtUserId" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane1" min="-2" pref="319" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="cmdTambah" alignment="0" max="32767" attributes="0"/>
-                  <Component id="cmdEdit" alignment="0" max="32767" attributes="0"/>
-                  <Component id="cmdHapus" alignment="0" max="32767" attributes="0"/>
-                  <Component id="cmdBatal" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="cmdKeluar" min="-2" pref="73" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="248" max="-2" attributes="0"/>
+                      <EmptySpace pref="21" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="cmdTambah" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cmdEdit" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cmdHapus" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cmdBatal" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cmdKeluar" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
+                          <Component id="cmdSimpan" alignment="1" min="-2" pref="73" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="cmdSimpan" alignment="1" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <Component id="jLabel4" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="38" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <Component id="txtId" min="-2" max="-2" attributes="0"/>
@@ -81,7 +87,7 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Component id="cmdTambah" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cmdEdit" min="-2" max="-2" attributes="0"/>
@@ -94,9 +100,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cmdKeluar" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="198" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -163,7 +169,13 @@
     </Container>
     <Component class="javax.swing.JButton" name="cmdTambah">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tambah"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="66" red="0" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Add"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdTambahActionPerformed"/>
@@ -171,7 +183,13 @@
     </Component>
     <Component class="javax.swing.JButton" name="cmdSimpan">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Simpan"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="66" red="0" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cmdSimpanMouseClicked"/>
@@ -180,7 +198,13 @@
     </Component>
     <Component class="javax.swing.JButton" name="cmdBatal">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Batal"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="66" red="0" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Cancel"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdBatalActionPerformed"/>
@@ -188,7 +212,13 @@
     </Component>
     <Component class="javax.swing.JButton" name="cmdKeluar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Keluar"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="ff" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Close"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdKeluarActionPerformed"/>
@@ -196,7 +226,13 @@
     </Component>
     <Component class="javax.swing.JButton" name="cmdHapus">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hapus"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="66" red="0" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Delete"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdHapusActionPerformed"/>
@@ -204,6 +240,12 @@
     </Component>
     <Component class="javax.swing.JButton" name="cmdEdit">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="66" red="0" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Edit"/>
       </Properties>
       <Events>
@@ -216,6 +258,19 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtId">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="48" green="ea" red="fa" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="36" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="INPUT ADMIN"/>
+        <Property name="opaque" type="boolean" value="true"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

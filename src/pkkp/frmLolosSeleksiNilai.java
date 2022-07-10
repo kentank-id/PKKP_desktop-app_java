@@ -34,6 +34,9 @@ public class frmLolosSeleksiNilai extends javax.swing.JFrame {
         initComponents();
         open_db();
         selectDB();
+        setLocation(900, WIDTH);
+        setResizable(false);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     
     //method buka database

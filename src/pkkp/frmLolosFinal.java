@@ -27,7 +27,7 @@ public class frmLolosFinal extends javax.swing.JFrame {
     Connection con;
 
     //create variabel
-    final String querySelect = "SELECT * FROM lolos_nilai WHERE hasil_seleksi_nilai='LOLOS' GROUP BY total_nilai LIMIT 3";
+    final String querySelect = "SELECT * FROM lolos_nilai WHERE hasil_seleksi_nilai='LOLOS' ORDER BY total_nilai DESC LIMIT 3 ";
 
     /**
      * Creates new form frmLolosFinal
@@ -36,6 +36,9 @@ public class frmLolosFinal extends javax.swing.JFrame {
         initComponents();
         open_db();
         selectDB();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setLocation(400, 400);
+        setResizable(false);
     }
 
     //method buka database
@@ -120,7 +123,7 @@ public class frmLolosFinal extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("DATA PESERTA LOLOS PKKP");
+        jLabel2.setText("PESERTA LOLOS SELEKSI NILAI");
 
         tblLolosFinal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -172,7 +175,7 @@ public class frmLolosFinal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cmdCetak)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -183,15 +186,15 @@ public class frmLolosFinal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(17, 17, 17)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCetak)
                     .addComponent(jButton1))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();

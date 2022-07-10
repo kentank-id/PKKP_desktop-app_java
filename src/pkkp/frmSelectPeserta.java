@@ -39,6 +39,9 @@ public class frmSelectPeserta extends javax.swing.JFrame {
         initComponents();
         open_db();
         selectDB();
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setLocation(0, 420);
+        setResizable(false);
     }
 
     //method buka database
@@ -93,7 +96,7 @@ public class frmSelectPeserta extends javax.swing.JFrame {
                     res.getString("peserta_status"),
                     res.getString("peserta_ipk"),
                     res.getString("peserta_email"),
-                    res.getInt("peserta_telp")
+                    res.getString("peserta_telp")
                 });
             }
             System.out.println("Sukses Load Table");
@@ -140,9 +143,11 @@ public class frmSelectPeserta extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(250, 234, 72));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("DAFTAR PESERTA");
+        jLabel1.setText("List of Participants");
+        jLabel1.setOpaque(true);
 
         tblPsrt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -171,16 +176,22 @@ public class frmSelectPeserta extends javax.swing.JFrame {
         }
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("* Daftar peserta yang telah mendaftar");
+        jLabel2.setText("* List of registered participants");
 
-        jButton1.setText("Keluar");
+        jButton1.setBackground(new java.awt.Color(255, 51, 51));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Close");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cetak");
+        jButton2.setBackground(new java.awt.Color(102, 255, 102));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Export");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -191,17 +202,21 @@ public class frmSelectPeserta extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1511, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 947, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -210,13 +225,17 @@ public class frmSelectPeserta extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2))))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -238,9 +257,9 @@ public class frmSelectPeserta extends javax.swing.JFrame {
 //        }
         try {
             export(tblPsrt, new File("Laporan_Peserta_Terdaftar.xls"));
-            JOptionPane.showMessageDialog(null, "Sukses Export data .....");
+            JOptionPane.showMessageDialog(null, "Export Successful");
         } catch (HeadlessException e) {
-            JOptionPane.showMessageDialog(null, "gagal export" + e);
+            JOptionPane.showMessageDialog(null, "Export Failed" + e);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

@@ -21,16 +21,21 @@
         </Menu>
       </SubComponents>
     </Menu>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem2"/>
+      </Properties>
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Data Master"/>
+            <Property name="text" type="java.lang.String" value="MASTER"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mnPeserta">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Data Peserta"/>
+                <Property name="text" type="java.lang.String" value="Input Participant"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnPesertaActionPerformed"/>
@@ -38,7 +43,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnUser">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Data User"/>
+                <Property name="text" type="java.lang.String" value="Input Admin"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnUserActionPerformed"/>
@@ -46,7 +51,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnKabKota">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Data Kab/Kota"/>
+                <Property name="text" type="java.lang.String" value="Recent Regencies"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnKabKotaActionPerformed"/>
@@ -54,7 +59,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnKec">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Data Kecamatan"/>
+                <Property name="text" type="java.lang.String" value="Recent Districts"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnKecActionPerformed"/>
@@ -62,7 +67,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnKel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Data Kelurahan"/>
+                <Property name="text" type="java.lang.String" value="Recent Villages"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnKelActionPerformed"/>
@@ -72,12 +77,12 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Transaksi"/>
+            <Property name="text" type="java.lang.String" value="TRANSACTION"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mnAdministrasi">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Seleksi Administrasi"/>
+                <Property name="text" type="java.lang.String" value="Administration Selection"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnAdministrasiActionPerformed"/>
@@ -85,7 +90,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnsNilai">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Seleksi Nilai"/>
+                <Property name="text" type="java.lang.String" value="Grades Selection"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnsNilaiActionPerformed"/>
@@ -95,12 +100,12 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Laporan"/>
+            <Property name="text" type="java.lang.String" value="REPORT"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem10">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Laporan Data Peserta"/>
+                <Property name="text" type="java.lang.String" value="Participant Data"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem10ActionPerformed"/>
@@ -108,7 +113,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem11">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Laporan Data User"/>
+                <Property name="text" type="java.lang.String" value="Admin Data"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem11ActionPerformed"/>
@@ -116,7 +121,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem12">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Laporan Lolos Seleksi Administrasi"/>
+                <Property name="text" type="java.lang.String" value="Pass Adminstrative Selection"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem12ActionPerformed"/>
@@ -124,7 +129,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Laporan Lolos Seleksi Nilai"/>
+                <Property name="text" type="java.lang.String" value="Pass Grades Selection"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
@@ -132,7 +137,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem14">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Laporan Peserta Lolos"/>
+                <Property name="text" type="java.lang.String" value="Final Participant Report"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem14ActionPerformed"/>
@@ -142,12 +147,17 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Utility"/>
+            <Property name="text" type="java.lang.String" value="UTILITY"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="About Developer"/>
+              </Properties>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Keluar"/>
+                <Property name="text" type="java.lang.String" value="Exit"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem6ActionPerformed"/>
@@ -159,7 +169,10 @@
     </Menu>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="48" green="ea" red="fa" type="rgb"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
@@ -181,13 +194,49 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="565" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="280" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="12" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Sans" size="55" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="MAIN MENU"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="sansserif" size="12" style="2"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="* this view can only be seen by Admin"/>
+      </Properties>
+    </Component>
+  </SubComponents>
 </Form>
