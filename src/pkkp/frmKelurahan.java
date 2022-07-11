@@ -29,6 +29,7 @@ public class frmKelurahan extends javax.swing.JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocation(0, 200);
         setResizable(false);
+        tblKelurahan.setDefaultEditor(Object.class, null);
     }
 
     //method buka database

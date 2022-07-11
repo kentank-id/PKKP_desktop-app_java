@@ -251,6 +251,7 @@ public class frmPeserta extends javax.swing.JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocation(390, 0);
         setResizable(false);
+        tblPeserta.setDefaultEditor(Object.class, null);
 
     }
 
@@ -653,7 +654,7 @@ public class frmPeserta extends javax.swing.JFrame {
         jLabel1.setText("INPUT PARTICIPANT");
         jLabel1.setOpaque(true);
 
-        btnTambah.setBackground(new java.awt.Color(0, 102, 255));
+        btnTambah.setBackground(new java.awt.Color(102, 255, 102));
         btnTambah.setForeground(new java.awt.Color(255, 255, 255));
         btnTambah.setText("Add");
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -1061,7 +1062,7 @@ public class frmPeserta extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        
+
         //</editor-fold>
 
         /* Create and display the form */

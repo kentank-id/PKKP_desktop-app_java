@@ -28,6 +28,7 @@ public class frmKecamatan extends javax.swing.JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocation(0, 200);
         setResizable(false);
+        tblKecamatan.setDefaultEditor(Object.class, null);
     }
     
     //method buka database

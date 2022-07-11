@@ -82,6 +82,7 @@ public class frmSupportSeleksiNilai extends javax.swing.JFrame {
         cmdKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("FRAME SUPPORT ");
 
         tblLolosAdminsitrasi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

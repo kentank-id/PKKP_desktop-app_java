@@ -133,16 +133,17 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
         cmdSeleksi = new javax.swing.JButton();
         cmbSurDok = new javax.swing.JComboBox<>();
         minIpk = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         cmdKeluar = new javax.swing.JButton();
         cmdSimpan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Seleksi Administrasi");
+        setTitle("ADMINISTRATIVE SELECTION");
 
         jLabel1.setBackground(new java.awt.Color(250, 234, 72));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Administration Selection");
+        jLabel1.setText("Administrative Selection");
         jLabel1.setOpaque(true);
 
         tblSeleksi.setModel(new javax.swing.table.DefaultTableModel(
@@ -201,6 +202,8 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("* 0 - 4.0");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -220,7 +223,8 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(minIpk, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(minUsia, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(minUsia, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -265,7 +269,9 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel5)
                             .addComponent(minIpk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cmdSeleksi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -393,6 +399,7 @@ public class frmSeleksiAdm extends javax.swing.JFrame {
     private javax.swing.JButton cmdSeleksi;
     private javax.swing.JButton cmdSimpan;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

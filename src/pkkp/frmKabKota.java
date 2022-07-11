@@ -17,7 +17,7 @@ public class frmKabKota extends javax.swing.JFrame {
     private Connection con;
     private Statement stat;
     private ResultSet res;
-    final String querySelect = "SELECT * FROM data_peserta GROUP by peserta_kabkota ORDER BY CONVERT(peserta_id, decimal) DESC";
+    final String querySelect = "SELECT * FROM data_peserta GROUP by peserta_kabkota ORDER BY peserta_id ASC";
 
     /**
      * Creates new form frmKabKota
@@ -29,6 +29,7 @@ public class frmKabKota extends javax.swing.JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocation(0, 200);
         setResizable(false);
+        tblKabKota.setDefaultEditor(Object.class, null);
     }
 
     //method buka database

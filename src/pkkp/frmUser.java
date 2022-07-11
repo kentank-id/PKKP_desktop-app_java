@@ -4,6 +4,9 @@
  */
 package pkkp;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.JOptionPane;
@@ -27,7 +30,6 @@ public class frmUser extends javax.swing.JFrame {
     final String queryInsert = "INSERT INTO data_user(id, user_id, user_password) VALUES(?,?,?)";
     final String queryUpdate = "UPDATE data_user SET user_id=?, user_password=? WHERE id=?";
     final String queryDelete = "DELETE FROM data_user WHERE id=?";
-    
 
     /**
      * Creates new form frmUser
@@ -113,6 +115,31 @@ public class frmUser extends javax.swing.JFrame {
         }
     }
 
+    public static String getMd5(String input) {
+        try {
+
+            // Static getInstance method is called with hashing MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+
+            // digest() method is called to calculate message digest
+            //  of an input digest() return array of byte
+            byte[] messageDigest = md.digest(input.getBytes());
+
+            // Convert byte array into signum representation
+            BigInteger no = new BigInteger(1, messageDigest);
+
+            // Convert message digest into hex value
+            String hashtext = no.toString(16);
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        } // For specifying wrong message digest algorithms
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void insert_data() {
         PreparedStatement statement;
         String password = new String(txtPassword.getPassword());
@@ -120,7 +147,7 @@ public class frmUser extends javax.swing.JFrame {
             statement = con.prepareStatement(queryInsert);
             statement.setString(1, txtId.getText());
             statement.setString(2, txtUserId.getText());
-            statement.setString(3, password);
+            statement.setString(3, getMd5(password));
             statement.executeUpdate();
             System.out.println("Berhasil Input DB");
         } catch (SQLException e) {
@@ -135,7 +162,7 @@ public class frmUser extends javax.swing.JFrame {
         try {
             statement = con.prepareStatement(queryUpdate);
             statement.setString(1, txtUserId.getText());
-            statement.setString(2, password);
+            statement.setString(2, getMd5(password));
             statement.setString(3, txtId.getText());
             statement.executeUpdate();
             System.out.println("berhasil update data");
@@ -150,7 +177,7 @@ public class frmUser extends javax.swing.JFrame {
         int confirm = JOptionPane.showConfirmDialog(null, "Delete Data ?");
         if (confirm == 0) {
             try {
-                statement=con.prepareStatement(queryDelete);
+                statement = con.prepareStatement(queryDelete);
                 statement.setString(1, getIdDelete());
                 statement.executeUpdate();
                 System.out.println("berhasil delete data");
@@ -167,6 +194,14 @@ public class frmUser extends javax.swing.JFrame {
         String finalValue = (String) tblUser.getValueAt(row, column);
         System.out.println(finalValue);
         return finalValue;
+    }
+    
+    private void showPassword(){
+        if(jCheckBoxShowPassword.isSelected()){
+            txtPassword.setEchoChar((char)0);
+        }else{
+            txtPassword.setEchoChar('*');
+        }
     }
 
     /**
@@ -193,8 +228,16 @@ public class frmUser extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jCheckBoxShowPassword = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("INPUT ADMIN");
+
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("User ID");
 
@@ -300,6 +343,13 @@ public class frmUser extends javax.swing.JFrame {
         jLabel4.setText("INPUT ADMIN");
         jLabel4.setOpaque(true);
 
+        jCheckBoxShowPassword.setText("show");
+        jCheckBoxShowPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxShowPasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -316,10 +366,13 @@ public class frmUser extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtPassword)
-                                .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtPassword)
+                                    .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBoxShowPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(66, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
@@ -351,7 +404,9 @@ public class frmUser extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCheckBoxShowPassword)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -380,7 +435,7 @@ public class frmUser extends javax.swing.JFrame {
 
     private void cmdTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdTambahActionPerformed
         // TODO add your handling code here:
-        edit=false;
+        edit = false;
         aktif(true);
         setTombol(false);
         kosong();
@@ -390,6 +445,7 @@ public class frmUser extends javax.swing.JFrame {
         // TODO add your handling code here:
         aktif(false);
         setTombol(true);
+        kosong();
     }//GEN-LAST:event_cmdBatalActionPerformed
 
     private void cmdKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdKeluarActionPerformed
@@ -450,6 +506,15 @@ public class frmUser extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmdSimpanMouseClicked
 
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void jCheckBoxShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxShowPasswordActionPerformed
+        // TODO add your handling code here:
+        showPassword();
+    }//GEN-LAST:event_jCheckBoxShowPasswordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -492,6 +557,7 @@ public class frmUser extends javax.swing.JFrame {
     private javax.swing.JButton cmdKeluar;
     private javax.swing.JButton cmdSimpan;
     private javax.swing.JButton cmdTambah;
+    private javax.swing.JCheckBox jCheckBoxShowPassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

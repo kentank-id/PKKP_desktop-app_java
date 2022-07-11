@@ -142,11 +142,12 @@ public class frmSelectPeserta extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("LIST PARTICIPANTS");
 
         jLabel1.setBackground(new java.awt.Color(250, 234, 72));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("List of Participants");
+        jLabel1.setText("List Participants");
         jLabel1.setOpaque(true);
 
         tblPsrt.setModel(new javax.swing.table.DefaultTableModel(
@@ -179,8 +180,6 @@ public class frmSelectPeserta extends javax.swing.JFrame {
         jLabel2.setText("* List of registered participants");
 
         jButton1.setBackground(new java.awt.Color(255, 51, 51));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Close");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,8 +188,6 @@ public class frmSelectPeserta extends javax.swing.JFrame {
         });
 
         jButton2.setBackground(new java.awt.Color(102, 255, 102));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Export");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

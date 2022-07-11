@@ -113,10 +113,13 @@ public class frmDataUser extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("DATA ADMIN");
 
+        jLabel2.setBackground(new java.awt.Color(250, 234, 72));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("DATA ADMIN");
+        jLabel2.setOpaque(true);
 
         tblDataUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -146,14 +149,16 @@ public class frmDataUser extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblDataUser);
 
-        cmdCetak.setText("Cetak");
+        cmdCetak.setBackground(new java.awt.Color(102, 255, 102));
+        cmdCetak.setText("Export");
         cmdCetak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdCetakActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Keluar");
+        jButton1.setBackground(new java.awt.Color(255, 51, 51));
+        jButton1.setText("Close");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -169,11 +174,12 @@ public class frmDataUser extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(cmdCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(9, 9, 9)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

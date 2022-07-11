@@ -5,6 +5,7 @@
 package pkkp;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import javax.swing.JTextField;
 
 /**
  *
@@ -12,16 +13,19 @@ import com.formdev.flatlaf.FlatLightLaf;
  */
 public class frmMenu extends javax.swing.JFrame {
 
+
     /**
      * Creates new form frmMenu
      */
+    
     public frmMenu() {
         initComponents();
-        setSize(400,200);
+        setSize(400, 200);
         setResizable(false);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocation(0, 0);
         getContentPane().setBackground(new java.awt.Color(250, 234, 72));
+        jTextFieldLog.setEditable(false);
     }
 
     /**
@@ -40,6 +44,8 @@ public class frmMenu extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jTextFieldLog = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnPeserta = new javax.swing.JMenuItem();
@@ -74,10 +80,17 @@ public class frmMenu extends javax.swing.JFrame {
         setBackground(new java.awt.Color(250, 234, 72));
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 55)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MAIN MENU");
 
         jLabel2.setFont(new java.awt.Font("sansserif", 2, 12)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("* this view can only be seen by Admin");
+
+        jTextFieldLog.setText("> selamat datang master");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel3.setText("Log :");
 
         jMenu1.setText("MASTER");
 
@@ -125,7 +138,7 @@ public class frmMenu extends javax.swing.JFrame {
 
         jMenu2.setText("TRANSACTION");
 
-        mnAdministrasi.setText("Administration Selection");
+        mnAdministrasi.setText("Administrative Selection");
         mnAdministrasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnAdministrasiActionPerformed(evt);
@@ -190,6 +203,11 @@ public class frmMenu extends javax.swing.JFrame {
         jMenu4.setText("UTILITY");
 
         jMenuItem3.setText("About Developer");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem3);
 
         jMenuItem6.setText("Exit");
@@ -209,23 +227,30 @@ public class frmMenu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel1)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldLog, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addComponent(jLabel2)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -233,68 +258,86 @@ public class frmMenu extends javax.swing.JFrame {
 
     private void mnKabKotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnKabKotaActionPerformed
         // TODO add your handling code here:
+        jTextFieldLog.setText("> open frame recent regencies");
         new frmKabKota().setVisible(true);
     }//GEN-LAST:event_mnKabKotaActionPerformed
 
     private void mnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnUserActionPerformed
         // TODO add your handling code here:
+        jTextFieldLog.setText("> open frame input admin");
         new frmUser().setVisible(true);
     }//GEN-LAST:event_mnUserActionPerformed
 
     private void mnPesertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnPesertaActionPerformed
         // TODO add your handling code here:
+        jTextFieldLog.setText("> open frame input participant");
         new frmPeserta().setVisible(true);
     }//GEN-LAST:event_mnPesertaActionPerformed
 
     private void mnKecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnKecActionPerformed
         // TODO add your handling code here:
+        jTextFieldLog.setText("> open frame recent districs");
         new frmKecamatan().setVisible(true);
     }//GEN-LAST:event_mnKecActionPerformed
 
     private void mnKelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnKelActionPerformed
         // TODO add your handling code here:
+        jTextFieldLog.setText("> open frame recent villages");
         new frmKelurahan().setVisible(true);
     }//GEN-LAST:event_mnKelActionPerformed
 
     private void mnAdministrasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAdministrasiActionPerformed
         // TODO add your handling code here:
+        jTextFieldLog.setText("> open frame administrative selection");
         new frmSeleksiAdm().setVisible(true);
     }//GEN-LAST:event_mnAdministrasiActionPerformed
 
     private void mnsNilaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnsNilaiActionPerformed
         // TODO add your handling code here:
+        jTextFieldLog.setText("> open frame grades selection");
         new frmSeleksiNilai().setVisible(true);
     }//GEN-LAST:event_mnsNilaiActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
-    java.lang.System.exit(0);
+        java.lang.System.exit(0);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
+        jTextFieldLog.setText("> open frame participants data");
         new frmSelectPeserta().setVisible(true);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
+        jTextFieldLog.setText("> open frame admin data");
         new frmDataUser().setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         // TODO add your handling code here:
+        jTextFieldLog.setText("> open frame pass administrative selection");
         new frmSelectLolosAdm().setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
+        jTextFieldLog.setText("> open frame pass grades selection");
         new frmLolosSeleksiNilai().setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         // TODO add your handling code here:
+        jTextFieldLog.setText("> open frame final participant report");
         new frmLolosFinal().setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        jTextFieldLog.setText("> open frame about developer");
+        new frmDeveloper().setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,6 +362,7 @@ public class frmMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -332,6 +376,7 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JTextField jTextFieldLog;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.MenuBar menuBar1;
