@@ -6,7 +6,7 @@ package pkkp;
 import java.sql.*;
 /**
  *
- * @author ROYAN FARID
+ * @author WIDHO FAISAL HAKIM
  */
 public class KoneksiMysql {
     String url, usr, pwd, dbn;

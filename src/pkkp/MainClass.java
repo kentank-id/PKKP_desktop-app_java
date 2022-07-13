@@ -1,4 +1,4 @@
-package pkkp;
+package pkkp; 
 
 import com.formdev.flatlaf.FlatLightLaf;
 import java.io.File;
@@ -24,6 +24,6 @@ public class MainClass {
     public static void main(String[] args) {
         FlatLightLaf.setup();
         SplashScreenDemo splashScreenDemo = new SplashScreenDemo();
-        new frmLogin().setVisible(true);
+        new JFrameLogin().setVisible(true);
     }
 }
